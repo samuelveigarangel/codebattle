@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Home</h1>
+
+    <section>
+        <h3>Events</h3>
+
+        <div id="events--lists">
+            {% for event in events %}
+                <a href="{% url 'event' event.pk %}">
+                    <div>
+                        {{event.name}}
+                    </div>
+                </a>
+            {%endfor%}
+        </div>
+
+    </section>
+
+    <section>
+        <h3>Users</h3>
+
+        
+        <div id="events--lists">
+            {% for user in users %}
+                <div>
+                    {{user.name}}
+                </div>
+
+            {%endfor%}
+        </div>
+        
+    </section>
+{% endblock %}
