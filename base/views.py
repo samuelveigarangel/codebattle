@@ -23,7 +23,15 @@ def account_page(request):
 
 def event_page(request, pk):
     event = Event.objects.get(id=pk)
-    return render(request, "event.html", {"event": event})
+    
+    registered = False
+    submitted = False
+    
+    if request.user.is_authenticated:
+        registered = request.user.event_set.filter(id=event.id).exists()
+        submitted = Submission.objects.filter(participant=request.user, event=event).exists()
+
+    return render(request, "event.html", {"event": event, 'registered':registered, 'submitted':submitted})
 
 
 def registration_confirmation(request, pk):
