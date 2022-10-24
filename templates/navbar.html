@@ -1,0 +1,15 @@
+<style>
+    nav{
+        background-color: bisque;
+    }
+</style>
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'account' %}">My Account</a>
+        <a href="#">Logout</a>
+    {% else %}
+        <a href="#">Login</a>
+    {% endif %}
+</nav>

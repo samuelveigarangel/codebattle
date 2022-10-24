@@ -25,10 +25,13 @@
         
         <div id="events--lists">
             {% for user in users %}
+            
+            <a href="{% url 'profile' user.id %}">    
                 <div>
                     {{user.name}}
                 </div>
-
+            </a>
+            
             {%endfor%}
         </div>
         
