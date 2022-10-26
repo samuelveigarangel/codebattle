@@ -8,14 +8,17 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script> -->
 </head>
 <body>
     <main>
         {% include 'navbar.html' %}
-        {% block content %}
-        {% endblock %}
+        <div class="container--main">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
 
     

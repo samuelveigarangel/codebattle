@@ -2,17 +2,18 @@
 
 {% block content %}
 
-    <h1>Home</h1>
 
-    <section>
+    <section class="container--events">
         <h3>Events</h3>
 
-        <div id="events--lists">
+        <div class="events--lists">
             {% for event in events %}
                 <a href="{% url 'event' event.pk %}">
-                    <div>
-                        {{event.name}}
-                    </div>
+                    <div class="wrapper--event">
+                        <strong>{{event.name}}</strong>
+                        <p>{{event.participants.count}} registered</p>
+                        <p>Registration deadline: {{event.registration_deadline}}</p>
+                    </div> 
                 </a>
             {%endfor%}
         </div>
@@ -21,15 +22,14 @@
 
     <section>
         <h3>Users</h3>
-
         
-        <div id="events--lists">
+        
+        <div class="user--lists">
             {% for user in users %}
             
             <a href="{% url 'profile' user.id %}">    
-                <div>
-                    {{user.name}}
-                    {{user.email}}
+                <div class="wrapper--user">
+                    <h4>{{user.name}}</h4>
                 </div>
             </a>
             

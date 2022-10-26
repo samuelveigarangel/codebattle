@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 
 
 from .models import User, Event, Submission
@@ -105,6 +106,10 @@ def project_submission(request, pk):
 @login_required(login_url="/login")
 def update_submission(request, pk):
     submission = Submission.objects.get(id=pk)
+
+    if request.user != submission.participant:
+        return HttpResponse('You cant be here!!!!')
+        
     event = submission.event
     form = SubmissionForm(instance=submission)
     if request.method == "POST":
